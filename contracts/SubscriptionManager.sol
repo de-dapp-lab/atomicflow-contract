@@ -90,7 +90,7 @@ contract SubscriptionManager is Ownable {
         payments[_payer][_planKey].status = _status;
     }
 
-    // 以下receiver（Notion）が使うメソッド
+    // 以下receiver（事業者側）が使うメソッド
     // receiverが新しいplanを作成する
     function createPlan(Plan calldata plan) external onlyReceiver {
         // plansに追加する
@@ -98,8 +98,8 @@ contract SubscriptionManager is Ownable {
         planKeys.push(plan.planKey);
     }
 
-    // 以下Payer（DeNA）が使うmethod
-    // Payerが支払いを開始をするメソッド（DeNAがNotionのbasic planを契約する）
+    // 以下Payer（支払い側）が使うmethod
+    // Payerが支払いを開始をするメソッド（支払い側が事業者側のbasic planを契約する）
     function startPayment(uint256 _planKey, uint256 _payerWallet) external {
         // paymentsを追加する
 
@@ -197,6 +197,10 @@ contract SubscriptionManager is Ownable {
         return
             payments[memberToPayer[_user]][_planKey].status &&
             members[memberToPayer[_user]][_planKey][_user];
+    }
+
+    function getPlan(uint256 _planKey) external view returns (Plan memory){
+        return plans[_planKey];
     }
 
     modifier onlyReceiver() {

@@ -22,3 +22,10 @@ yarn test:gas
 # Get contract size
 yarn csize
 ```
+
+# Other part of Atomicflow Repository
+## Client
+https://github.com/de-dapp-lab/atomicflow-ui
+
+## Server
+https://github.com/de-dapp-lab/atomicflow-operator

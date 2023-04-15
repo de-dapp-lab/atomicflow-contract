@@ -20,6 +20,7 @@ contract SubscriptionManager is Ownable {
         uint256 receiverWallet;
         uint256 amountPerMonth;
         uint256 maxMember;
+        uint256 planName;
     }
 
     /** @dev
